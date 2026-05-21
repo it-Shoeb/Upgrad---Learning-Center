@@ -5,88 +5,34 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class dishantAssignment01 {
-
-    // Explain the Two-Pointer technique. Solve: find a pair with a given sum in a
-    // sorted array.
-    // pointer typically start from opposite ends (left at beggining, right at end)
-
-    static void twoPointer(int[] arr, int target) {
-        int left = 0;
-        int right = arr.length - 1;
-        int sum = 0;
-
-        // while (left < right) {
-        for (int i = 0; i < arr.length; i++) {
-            sum = arr[left] + arr[right];
-            System.out.println(arr[left] + " " + arr[right]);
-
-            if (sum == target) {
-                System.out.println(left + " " + right);
-                return;
-            }
-
-            left++;
-            right--;
-        }
-    }
-
-    // How do you rotate an array by k positions to the right?
-    // right rotation mean move the last element to the front
-    // till the k element no
-    static void rightRight(int[] arr, int k) {
-        for (int i = 0; i < k; i++) {
-            int lastIndexVal = arr[arr.length - 1];
-
-            for (int j = arr.length - 1; j > 0; j--) {
-                arr[j] = arr[j - 1];
-            }
-
-            arr[0] = lastIndexVal;
-        }
-        System.out.println(Arrays.toString(arr));
-    }
-
     public static void main(String[] args) {
-        // int[] arr = { 2, 1, 3, 3, 4, 5 };
-        // rightRight(arr, 2);
-        // twoPointer(arr, 6);
-
-        // int n = 5;
-        // for (int i = 0; i < n; i++) {
-        // for (int j = 0; j < (n - i); j++) {
-        // System.out.print(" * ");
-        // }
-        // System.out.println();
-        // }
-
         // 1.
         // int[] arr1 = { 1, 2, 3, 4 };
         // System.out.println(sumOfAllElements(arr1));
 
         // 2.
         // int[] arr2= { 5, 1, 9, 3, 7 };
-        // findTheMaxAndMin(ar2);
+        // findTheMaxAndMin(arr2);
 
         // 3.
         // int[] arr3 = { 1, 2, 3, 4, 5, 6 };
         // countOddAndEven(arr3);
 
-        // 4. Reverse the array without using extra space (in-place). Example: [1, 2, 3,
-        // 4, 5] →
-        // [5, 4, 3, 2, 1]
+        // 4.
         // int[] arr4 = { 1, 2, 3, 4, 5 };
+        // reverseArray(arr4);
 
-        // 5. Remove all zeros from the array and shift non-zero elements to front.
-        // Example: [0, 1, 0, 3, 12] → [1, 3, 12, 0, 0]
-        // int[] arr5 = { 0, 1, 0, 3, 12};
+        // 5.
+        // int[] arr5 = { 0, 1, 0, 3, 12 };
+        // removeAllZeros(arr5);
 
         // 6.
         // int[] arr6 = { 10, 5, 8, 20, 15 };
         // System.out.println(secondLargestNumber(arr6));
 
-        // 7. Rotate the array to the right by 2 steps. Example: [1, 2, 3, 4, 5] → [4,
-        // 5, 1, 2, 3]
-        // int[] arr7 = { 1, 2, 3, 4, 5};
+        // 7.
+        // int[] arr7 = { 1, 2, 3, 4, 5 };
+        // rotateArrayByTwoStep(arr7, 2);
 
         // 8.
         // int[] arr8 = { 1, 3, 5, 5, 8 };
@@ -101,8 +47,8 @@ public class dishantAssignment01 {
 
         // 10. LeetCode Style: Move Zeroes Given an integer array nums, move all 0's to
         // the end while maintaining the relative order of the non-zero elements.
-        // int[] arr10 = { 0, 1, 0, 3, 12 };
-        // moveZerosToTheEnd(arr10);
+        int[] arr10 = { 0, 1, 0, 3, 12 };
+        moveZerosToTheEnd(arr10);
 
         // Section B: Strings (8 Questions)
 
@@ -141,17 +87,10 @@ public class dishantAssignment01 {
         // String b = "silent";
         // System.out.println(anagrams(a, b));
 
-        // // 19. Implement Linear Search – return index or -1.
-        // ArrayList<Integer> arrList = new ArrayList<>(5);
-
-        // arrList.add(0);
-        // arrList.add(1);
-        // arrList.add(2);
-        // arrList.add(3);
-        // arrList.add(4);
-        // arrList.add(5);
-
-        // System.out.println(arrList);
+        // // 19.
+        // int[] arr = { 1, 2, 3, 4, 5 };
+        // int target = 0;
+        // System.out.println(linearSearchReturnIndex(arr, target));
 
         // 20.
         // int[] arr = { 1, 2, 3, 4, 5 };
@@ -170,7 +109,7 @@ public class dishantAssignment01 {
         // you can achieve.
 
         // 24.
-        printAllNumberUsingRecursion(new int[] { 1, 2, 3, 4, 5 });
+        // printAllNumberUsingRecursion(new int[] { 1, 2, 3, 4, 5 });
     }
 
     // Section C: Basic Algorithms & LeetCode Easy (7 Questions)
@@ -180,11 +119,10 @@ public class dishantAssignment01 {
     // 24. Print all numbers from 1 to N using Recursion.
     static void printAllNumberUsingRecursion(int[] arr) {
         int start = 0;
-        
+
         if (start < arr.length) {
             return;
         }
-
 
         printAllNumberUsingRecursion(arr[start++]);
         // System.out.println();
@@ -249,6 +187,14 @@ public class dishantAssignment01 {
     }
 
     // 19. Implement Linear Search – return index or -1.
+    static int linearSearchReturnIndex(int[] arr, int target) {
+        for (int i = 0; i < arr.length; i++) {
+            if (target == arr[i]) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
     // Section B: Strings (8 Questions)
 
@@ -387,17 +333,15 @@ public class dishantAssignment01 {
     // the end while maintaining the relative order of the non-zero elements.
 
     static void moveZerosToTheEnd(int[] arr) {
+
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == 0) {
-                for (int j = i; j < arr.length; j++) {
-                    if (j != arr.length - 1) {
-                        arr[j] = arr[j + 1];
-                    } else {
-                        arr[j] = 0;
-                    }
+                int currentIndexVal = arr[i];
+                for (int j = i; j > arr.length - 2; j++) {
+                    arr[j] = arr[j - 1];
                 }
+                arr[arr.length - 1] = currentIndexVal;
             }
-
         }
 
         System.out.println(Arrays.toString(arr));
@@ -445,6 +389,21 @@ public class dishantAssignment01 {
     // 7. Rotate the array to the right by 2 steps. Example: [1, 2, 3, 4, 5] → [4,
     // 5, 1, 2, 3]
 
+    static void rotateArrayByTwoStep(int[] arr, int k) {
+
+        for (int j = 1; j <= k; j++) {
+            int lastIndex = arr[arr.length - 1];
+
+            for (int i = arr.length - 1; i >= 1; i--) {
+                arr[i] = arr[i - 1];
+            }
+
+            arr[0] = lastIndex;
+        }
+        System.out.println(Arrays.toString(arr));
+
+    }
+
     // 6. Find the second largest number in an array. Example: [10, 5, 8, 20, 15] →
     // 15
 
@@ -471,9 +430,36 @@ public class dishantAssignment01 {
     // 5. Remove all zeros from the array and shift non-zero elements to front.
     // Example: [0, 1, 0, 3, 12] → [1, 3, 12, 0, 0]
 
+    static void removeAllZeros(int[] arr) {
+        System.out.println(Arrays.toString(arr));
+        for (int i = 0; i < arr.length; i++) {
+            int lastIndex = 0;
+            System.out.println(lastIndex);
+            if (arr[i] == 0) {
+                for (int j = i; j < arr.length - 1; j++) {
+                    arr[j] = arr[j + 1];
+                }
+            }
+
+            arr[arr.length - 1] = lastIndex;
+        }
+
+        System.out.println(Arrays.toString(arr));
+    }
+
     // 4. Reverse the array without using extra space (in-place). Example: [1, 2, 3,
     // 4, 5] →
     // [5, 4, 3, 2, 1]
+
+    static void reverseArray(int[] arr) {
+        int[] newArr = new int[arr.length];
+
+        for (int i = 0; i < arr.length; i++) {
+            newArr[i] = arr[(arr.length - 1) - i];
+        }
+
+        System.out.println(Arrays.toString(newArr));
+    }
 
     // 3. Count how many numbers are even and how many are odd. Example: [1, 2, 3,
     // 4, 5, 6]
